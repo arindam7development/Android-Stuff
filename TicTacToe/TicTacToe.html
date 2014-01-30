@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+var x = "assets/x.jpg";
+var o = "assets/o.jpg";
+
+var blank = "assets/blank.jpg";
+var pause = 0;
+var alt = 0;
+var a = 0;
+var b = 0;
+var c = 0;
+var d = 0;
+var e = 0;
+var f = 0;
+var g = 0;
+var h = 0;
+var i = 0;
+var tem="";
+var okCheck = 0;
+var chance = 0;
+var choice=9;
+var RandomNo = 0;
+var com = 0;
+var t = 0;
+var wins = 0;
+var andro = 0;
+var tea = 0;
+
+function oneLog() {
+if ((a==1)&&(b==1)&&(c==1)) alt=1;
+if ((a==1)&&(d==1)&&(g==1)) alt=1;
+if ((a==1)&&(e==1)&&(i==1)) alt=1;
+if ((b==1)&&(e==1)&&(h==1)) alt=1;
+if ((d==1)&&(e==1)&&(f==1)) alt=1;
+if ((g==1)&&(h==1)&&(i==1)) alt=1;
+if ((c==1)&&(f==1)&&(i==1)) alt=1;
+if ((g==1)&&(e==1)&&(c==1)) alt=1;
+if ((a==2)&&(b==2)&&(c==2)) alt=2;
+if ((a==2)&&(d==2)&&(g==2)) alt=2;
+if ((a==2)&&(e==2)&&(i==2)) alt=2;
+if ((b==2)&&(e==2)&&(h==2)) alt=2;
+if ((d==2)&&(e==2)&&(f==2)) alt=2;
+if ((g==2)&&(h==2)&&(i==2)) alt=2;
+if ((c==2)&&(f==2)&&(i==2)) alt=2;
+if ((g==2)&&(e==2)&&(c==2)) alt=2;
+if ((a != 0)&&(b != 0)&&(c != 0)&&(d != 0)&&(e != 0)&&(f != 0)&&(g != 0)&&(h != 0)&&(i != 0)&&(alt == 0)) alt = 3;
+}
+function twoLog() {
+if ((a==2)&&(b==2)&&(c== 0)&&(tem=="")) tem="C";
+if ((a==2)&&(b== 0)&&(c==2)&&(tem=="")) tem="B";
+if ((a== 0)&&(b==2)&&(c==2)&&(tem=="")) tem="A";
+if ((a==2)&&(d==2)&&(g== 0)&&(tem=="")) tem="G";
+if ((a==2)&&(d== 0)&&(g==2)&&(tem=="")) tem="D";
+if ((a== 0)&&(d==2)&&(g==2)&&(tem=="")) tem="A";
+if ((a==2)&&(e==2)&&(i== 0)&&(tem=="")) tem="I";
+if ((a==2)&&(e== 0)&&(i==2)&&(tem=="")) tem="E";
+if ((a== 0)&&(e==2)&&(i==2)&&(tem=="")) tem="A";
+if ((b==2)&&(e==2)&&(h== 0)&&(tem=="")) tem="H";
+if ((b==2)&&(e== 0)&&(h==2)&&(tem=="")) tem="E";
+if ((b== 0)&&(e==2)&&(h==2)&&(tem=="")) tem="B";
+if ((d==2)&&(e==2)&&(f== 0)&&(tem=="")) tem="F";
+if ((d==2)&&(e== 0)&&(f==2)&&(tem=="")) tem="E";
+if ((d== 0)&&(e==2)&&(f==2)&&(tem=="")) tem="D";
+if ((g==2)&&(h==2)&&(i== 0)&&(tem=="")) tem="I";
+if ((g==2)&&(h== 0)&&(i==2)&&(tem=="")) tem="H";
+if ((g== 0)&&(h==2)&&(i==2)&&(tem=="")) tem="G";
+if ((c==2)&&(f==2)&&(i== 0)&&(tem=="")) tem="I";
+if ((c==2)&&(f== 0)&&(i==2)&&(tem=="")) tem="F";
+if ((c== 0)&&(f==2)&&(i==2)&&(tem=="")) tem="C";
+if ((g==2)&&(e==2)&&(c== 0)&&(tem=="")) tem="C";
+if ((g==2)&&(e== 0)&&(c==2)&&(tem=="")) tem="E";
+if ((g== 0)&&(e==2)&&(c==2)&&(tem=="")) tem="G";
+}
+function theLog() {
+if ((a==1)&&(b==1)&&(c==0)&&(tem=="")) tem="C";
+if ((a==1)&&(b==0)&&(c==1)&&(tem=="")) tem="B";
+if ((a==0)&&(b==1)&&(c==1)&&(tem=="")) tem="A";
+if ((a==1)&&(d==1)&&(g==0)&&(tem=="")) tem="G";
+if ((a==1)&&(d==0)&&(g==1)&&(tem=="")) tem="D";
+if ((a==0)&&(d==1)&&(g==1)&&(tem=="")) tem="A";
+if ((a==1)&&(e==1)&&(i==0)&&(tem=="")) tem="I";
+if ((a==1)&&(e==0)&&(i==1)&&(tem=="")) tem="E";
+if ((a==0)&&(e==1)&&(i==1)&&(tem=="")) tem="A";
+if ((b==1)&&(e==1)&&(h==0)&&(tem=="")) tem="H";
+if ((b==1)&&(e==0)&&(h==1)&&(tem=="")) tem="E";
+if ((b==0)&&(e==1)&&(h==1)&&(tem=="")) tem="B";
+if ((d==1)&&(e==1)&&(f==0)&&(tem=="")) tem="F";
+if ((d==1)&&(e==0)&&(f==1)&&(tem=="")) tem="E";
+if ((d==0)&&(e==1)&&(f==1)&&(tem=="")) tem="D";
+if ((g==1)&&(h==1)&&(i==0)&&(tem=="")) tem="I";
+if ((g==1)&&(h==0)&&(i==1)&&(tem=="")) tem="H";
+if ((g==0)&&(h==1)&&(i==1)&&(tem=="")) tem="G";
+if ((c==1)&&(f==1)&&(i==0)&&(tem=="")) tem="I";
+if ((c==1)&&(f==0)&&(i==1)&&(tem=="")) tem="F";
+if ((c==0)&&(f==1)&&(i==1)&&(tem=="")) tem="C";
+if ((g==1)&&(e==1)&&(c==0)&&(tem=="")) tem="C";
+if ((g==1)&&(e==0)&&(c==1)&&(tem=="")) tem="E";
+if ((g==0)&&(e==1)&&(c==1)&&(tem=="")) tem="G";
+}
+function clr() {
+document.game.you.value="0";
+document.game.android.value="0";
+document.game.ties.value="0";
+}
+function spaceCal() {
+if ((tem=="A")&&(a==0)) {
+okCheck=1;
+if (chance==0) a=1;
+if (chance==1) a=2;
+}
+if ((tem=="B")&&(b==0)) {
+okCheck=1;
+if (chance==0) b=1;
+if (chance==1) b=2;
+}
+if ((tem=="C")&&(c==0)) {
+okCheck=1;
+if (chance==0) c=1;
+if (chance==1) c=2;
+}
+if ((tem=="D")&&(d==0)) {
+okCheck=1;
+if (chance==0) d=1;
+if (chance==1) d=2;
+}
+if ((tem=="E")&&(e==0)) {
+okCheck=1;
+if (chance==0) e=1;
+if (chance==1) e=2;
+}
+if ((tem=="F")&&(f==0)) {
+okCheck=1
+if (chance==0) f=1;
+if (chance==1) f=2;
+}
+if ((tem=="G")&&(g==0)) {
+okCheck=1
+if (chance==0) g=1;
+if (chance==1) g=2;
+}
+if ((tem=="H")&&(h==0)) {
+okCheck=1;
+if (chance==0) h=1;
+if (chance==1) h=2;
+}
+if ((tem=="I")&&(i==0)) {
+okCheck=1;
+if (chance==0) i=1;
+if (chance==1) i=2;
+}
+}
+function playerMove(chosenSQR) {
+pause = 0;
+if (alt!=0) ended();
+if (alt==0) {
+chance = 0;
+okCheck = 0;
+tem=chosenSQR;
+spaceCal();
+if (okCheck==1) {
+document.images[chosenSQR].src = x;
+}
+if (okCheck==0)alreadyTaken();
+process();
+if ((alt==0)&&(pause==0)) androMove();
+   }
+}
+function alreadyTaken() {
+alert("Please select another square , this is already occupied.")
+pause=1;
+}
+function androMove() {
+tem="";
+okCheck = 0;
+chance=1;
+twoLog();
+theLog();
+spaceCal();
+while(okCheck==0) {
+RandomNo=Math.random()
+com=Math.round((choice-1)*RandomNo)+1;
+if (com==1) tem="A";
+if (com==2) tem="B";
+if (com==3) tem="C";
+if (com==4) tem="D";
+if (com==5) tem="E";
+if (com==6) tem="F";
+if (com==7) tem="G";
+if (com==8) tem="H";
+if (com==9) tem="I";
+spaceCal();
+}
+document.images[tem].src= o;
+process();
+}
+function ended() {
+alert("The game has ended.")
+}
+function process() {
+oneLog();
+if (alt==1){ alert("YES ! YOU WON !"); wins++; }
+if (alt==2){ alert("ANDROID WON!"); andro++; }
+if (alt==3){ alert("TIED."); tea++; }
+if (alt!=0) {
+document.game.you.value = wins;
+document.game.android.value = andro;
+document.game.ties.value = tea;
+   }
+}
+function playAgain() {
+if (alt==0) {
+if(confirm("The game will be restarted")) reset();
+}
+if (alt>0) reset();
+}
+function reset() {
+alt = 0;
+a = 0;
+b = 0;
+c = 0;
+d = 0;
+e = 0;
+f = 0;
+g = 0;
+h = 0;
+i = 0;
+tem="";
+okCheck = 0;
+chance = 0;
+choice=9;
+RandomNo = 0;
+com = 0;
+document.images.A.src= blank;
+document.images.B.src= blank;
+document.images.C.src= blank;
+document.images.D.src= blank;
+document.images.E.src= blank;
+document.images.F.src= blank;
+document.images.G.src= blank;
+document.images.H.src= blank;
+document.images.I.src= blank;
+if (t==0) { t=2; androMove(); }
+t--;
+}
+
+</script>
+
+</head>
+<body>
+<center>
+<form name=game>
+<table border=0>
+<td>
+<table border=1>
+<tr>
+<td><a href="javascript:playerMove('A')"><img src="blank.jpg" border=0 height=100 width=100 name=A alt="Top-Left"></a></td>
+<td><a href="javascript:playerMove('B')"><img src="blank.jpg" border=0 height=100 width=100 name=B alt="Top-Center"></a></td>
+<td><a href="javascript:playerMove('C')"><img src="blank.jpg" border=0 height=100 width=100 name=C alt="Top-Right"></a></td>
+</tr>
+<tr>
+<td><a href="javascript:playerMove('D')"><img src="blank.jpg" border=0 height=100 width=100 name=D alt="Middle-Left"></a></td>
+<td><a href="javascript:playerMove('E')"><img src="blank.jpg" border=0 height=100 width=100 name=E alt="Middle-Center"></a></td>
+<td><a href="javascript:playerMove('F')"><img src="blank.jpg" border=0 height=100 width=100 name=F alt="Middle-Right"></a></td>
+</tr>
+<tr>
+<td><a href="javascript:playerMove('G')"><img src="blank.jpg" border=0 height=100 width=100 name=G alt="Bottom-Left"></a></td>
+<td><a href="javascript:playerMove('H')"><img src="blank.jpg" border=0 height=100 width=100 name=H alt="Bottom-Center"></a></td>
+<td><a href="javascript:playerMove('I')"><img src="blank.jpg" border=0 height=100 width=100  name=I alt="Bottom-Right"></a></td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td><input type=text size=5 name=you></td><td>You</td></tr>
+<tr><td><input type=text size=5 name=android></td><td>Android</td></tr>
+<tr><td><input type=text size=5 name=ties></td><td>Ties</td></tr>
+</table>
+</td>
+</table>
+<input type=button value="Play Again" onClick="playAgain();">
+&nbsp;&nbsp;
+
+</form>
+</center>
+</body>
+</html>
