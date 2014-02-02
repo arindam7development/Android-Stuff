@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<title>To Do Notes !</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+<script >
+window.onload = init;
+
+function init() {
+	var button = document.getElementById("add_button");
+	button.onclick = createSticky;
+
+	var clearButton = document.getElementById("clear_button");
+	clearButton.onclick = clearStickyNotes;
+
+
+	var stickiesArray = getStickiesArray();
+	
+	for (var i = 0; i < stickiesArray.length; i++) {
+		var key = stickiesArray[i];
+		var value = JSON.parse(localStorage[key]);
+		addStickyToDOM(key, value);
+	}	
+}
+function getStickiesArray() {
+	var stickiesArray = localStorage.getItem("stickiesArray");
+	if (!stickiesArray) {
+		stickiesArray = [];
+		localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
+	} else {
+		stickiesArray = JSON.parse(stickiesArray);
+	}
+	return stickiesArray;
+}
+
+function createSticky() {
+	var stickiesArray = getStickiesArray();
+	var value = document.getElementById("note_text").value;
+	var colorSelectObj = document.getElementById("note_color");
+	var index = colorSelectObj.selectedIndex;
+	var color = colorSelectObj[index].value;
+
+	// create sticky note using JSON to hold value
+	var currentDate = new Date();
+	var key = "sticky_" + currentDate.getTime();
+	var stickyObj = {
+			"value": value,
+			"color": color
+	};
+	localStorage.setItem(key, JSON.stringify(stickyObj));
+
+	// add new sticky note key to array 
+	stickiesArray.push(key);
+	localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
+	
+	addStickyToDOM(key, stickyObj);
+}
+
+function deleteSticky(e) {
+	var key = e.target.id;
+	if (e.target.tagName.toLowerCase() == "span") {
+		key = e.target.parentNode.id;
+	}
+	var stickiesArray = getStickiesArray();
+	if (stickiesArray) {
+		for (var i = 0; i < stickiesArray.length; i++) {
+			if (key == stickiesArray[i]) {
+				stickiesArray.splice(i,1);
+			}
+		}
+		localStorage.removeItem(key);
+		localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
+		removeStickyFromDOM(key);
+	}
+}
+
+function addStickyToDOM(key, stickyObj) {
+	var stickies = document.getElementById("stickies");
+
+	var sticky = document.createElement("li");
+	
+	sticky.setAttribute("id", key);
+	
+	sticky.style.backgroundColor = stickyObj.color;
+
+	var span = document.createElement("span");
+	span.setAttribute("class", "sticky");
+
+	 
+	span.innerHTML = stickyObj.value;
+
+		sticky.appendChild(span);
+	stickies.appendChild(sticky);
+
+	sticky.onclick = deleteSticky;
+}
+
+function removeStickyFromDOM(key) {
+	var sticky = document.getElementById(key);
+	sticky.parentNode.removeChild(sticky);
+}
+
+function clearStickyNotes() {
+	localStorage.clear();
+	var stickyList = document.getElementById("stickies");
+	var stickies = stickyList.childNodes;
+	for (var i = stickies.length-1; i >= 0; i--) {
+		stickyList.removeChild(stickies[i]);
+	}
+
+	
+	var stickiesArray = getStickiesArray();
+}
+
+
+</script>
+<h1 align="center"> To Do Notes </h1>
+<style>
+
+
+body {
+	background-image:url('assets/background.jpg');
+background-repeat:repeat;
+	font-size: 100%;
+}
+
+form input#note_text {
+	width: 350px;
+}
+
+/* sticky note */
+
+ul#stickies li {
+	display: block;
+	list-style: none;
+	z-index: 1;
+	float: left; 
+	margin: 30px;
+	padding: 15px 15px 50px 15px;
+	width: 200px;
+	height: 200px;
+	border: 1px solid #bfbfbf;
+    background-color: LightGoldenRodYellow;  
+	color: black;
+	text-decoration: none;
+	-webkit-box-shadow: 2px 2px 4px rgba;
+	-moz-box-shadow: 2px 2px 4px rgba;
+	-o-box-shadow: 2px 2px 4px rgba;
+	box-shadow: 2px 2px 4px rgba;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	overflow: hidden;
+} 
+
+ul#stickies li span.sticky {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 200%;
+}
+
+/* 
+ * rotation
+ */
+ul#stickies li:nth-child(even) {
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+ul#stickies li:nth-child(odd) {
+	-webkit-transform: rotate(-1deg);
+	-moz-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg);
+	-ms-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+}
+
+ul#stickies li:nth-child(3n) {
+	-webkit-transform: rotate(1deg);
+	-moz-transform: rotate(1deg);
+	-o-transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+	transform: rotate(1deg);
+}
+
+/* 
+   Transform 
+*/
+ul#stickies li:hover {
+	-webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-webkit-transform: rotate(0deg) scale(1.25);
+	-moz-transform: rotate(0deg) scale(1.25);
+	-o-transform: rotate(0deg) scale(1.25);
+	-ms-transform: rotate(0deg) scale(1.25);
+	transform: rotate(0deg) scale(1.25);
+	z-index: 10;
+}
+
+
+</style>
+</head>
+<body>
+	<form align="center">
+		<label for="note_color">Color: </label>
+		<select id="note_color">
+			<option value="LightGoldenRodYellow">Yellow-ToDo</option> 
+			<option value="PaleGreen">Green-Ideas</option> 			
+			<option value="#FF0000">Red-URGENT</option> 			
+			<option value="LightBlue">Blue-InFuture</option> 
+		</select>
+		<label for="note_text">Text:</label> <input type="text" id="note_text">
+		<input type="button" id="add_button" value="Add Sticky Note to do">
+
+		<input type="button" id="clear_button" value="Clear all Sticky Notes">
+
+	</form>
+	
+	<ul id="stickies">
+	</ul>
+</body>
+</html>
