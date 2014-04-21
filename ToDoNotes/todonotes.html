@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<title>To Do Notes !</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <link rel="stylesheet" href="todonotes.css">
+<script src="todonotes.js"></script>
+<h1 align="center"> To Do Notes </h1>
+</head>
+<body>
+	<form align="center">
+		<label for="note_color">Color: </label>
+		<select id="note_color">
+			<option value="LightGoldenRodYellow">Yellow-ToDo</option> 
+			<option value="PaleGreen">Green-Ideas</option> 		
+			<option value="#FF0000">Red-URGENT</option> 		
+			<option value="LightBlue">Blue-InFuture</option> 
+		</select>
+		<label for="note_text">Text:</label> <input type="text" id="note_text">
+		<input type="button" id="add_button" value="Add Sticky Note to do">
+
+		<input type="button" id="clear_button" value="Clear all Sticky Notes">
+
+	</form>
+	
+	<ul id="ArindamNotes">
+	</ul>
+</body>
+</html>
