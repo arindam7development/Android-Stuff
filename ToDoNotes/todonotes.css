@@ -1,0 +1,86 @@
+
+
+body {
+	background-image:url('assets/background.jpg');
+background-repeat:repeat;
+	font-size: 100%;
+}
+
+form input#note_text {
+	width: 350px;
+}
+
+/* sticky note */
+
+ul#ArindamNotes li {
+	display: block;
+	list-style: none;
+	z-index: 1;
+	float: left; 
+	margin: 30px;
+	padding: 15px 15px 50px 15px;
+	width: 200px;
+	height: 200px;
+ 	border: 1px solid #bfbfbf;
+     background-color: LightGoldenRodYellow;  
+	color: black;
+	text-decoration: none;
+	-webkit-box-shadow: 2px 2px 4px rgba;
+	-moz-box-shadow: 2px 2px 4px rgba;
+	-o-box-shadow: 2px 2px 4px rgba;
+	box-shadow: 2px 2px 4px rgba;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	overflow: hidden;
+} 
+
+ul#ArindamNotes li span.sticky {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 200%;
+}
+
+/* 
+ * rotation
+ */
+ul#ArindamNotes li:nth-child(even) {
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+ul#ArindamNotes li:nth-child(odd) {
+	-webkit-transform: rotate(-1deg);
+	-moz-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg);
+	-ms-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+}
+
+ul#ArindamNotes li:nth-child(3n) {
+	-webkit-transform: rotate(1deg);
+	-moz-transform: rotate(1deg);
+	-o-transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+	transform: rotate(1deg);
+}
+
+/* 
+   Transform  
+*/
+ul#ArindamNotes li:hover {
+	-webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+	-webkit-transform: rotate(0deg) scale(1.25);
+	-moz-transform: rotate(0deg) scale(1.25);
+	-o-transform: rotate(0deg) scale(1.25);
+	-ms-transform: rotate(0deg) scale(1.25);
+	transform: rotate(0deg) scale(1.25);
+	z-index: 10;
+}
+
